@@ -427,6 +427,82 @@
     max-width: 400px;
     margin: 0 auto;
   }
+
+  /* SHARE BUTTON */
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 7px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-700);
+    background: var(--green-50);
+    border: 1.5px solid var(--green-200);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    position: relative;
+  }
+  .share-btn:hover {
+    background: var(--green-200);
+    border-color: var(--green-400);
+    color: var(--green-900);
+  }
+  .share-btn:active {
+    transform: scale(0.97);
+  }
+  .share-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+  .share-toast {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green-800);
+    color: var(--white);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .share-toast.show {
+    opacity: 1;
+  }
+
+  /* MOBILE: small screens */
+  @media (max-width: 480px) {
+    .nav-bar { padding: 12px 16px; }
+    .tab-btn { padding: 5px 12px; font-size: 11px; }
+    .nav-pill { padding: 6px 14px; font-size: 12px; }
+    .main { padding: 24px 14px 60px; }
+    .season-bar { padding: 16px 18px; margin-bottom: 28px; gap: 12px; }
+    .season-icon { font-size: 26px; }
+    .season-bar h3 { font-size: 16px; }
+    .season-bar p { font-size: 13px; }
+    .plant-card { margin-bottom: 24px; }
+    .card-intro { padding: 20px 18px 16px; }
+    .plant-name { font-size: 20px; }
+    .plant-desc { font-size: 14px; }
+    .care-item { padding: 16px 18px; }
+    .care-value { font-size: 14px; }
+    .care-detail { font-size: 12px; }
+    .texas-tip { padding: 16px 18px; }
+    .texas-tip-text { font-size: 12px; }
+    .category-badge { font-size: 11px; }
+    .footer { padding: 28px 16px; }
+    .empty-state { padding: 48px 18px; }
+    .empty-state h3 { font-size: 18px; }
+    .hero h1 { font-size: 2rem; }
+  }
 </style>
 </head>
 <body>
@@ -506,6 +582,11 @@
         <div class="plant-latin">Strelitzia reginae / S. nicolai</div>
         <h2 class="plant-name">Bird of Paradise</h2>
         <p class="plant-desc">A dramatic tropical plant with large, paddle-shaped leaves that fan out elegantly. Native to South Africa, it can grow 5–6 ft indoors and produces striking orange-and-blue flowers when given enough light. Its bold silhouette makes it a statement piece in any room.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -564,6 +645,11 @@
         <div class="plant-latin">Citrus spp.</div>
         <h2 class="plant-name">Dwarf Citrus Tree</h2>
         <p class="plant-desc">A compact citrus tree — likely a Meyer lemon or calamondin — staked with a bamboo support. Indoor citrus trees produce fragrant blossoms and small fruits when given enough light. They bring a touch of the orchard indoors and can fruit year-round in the right conditions.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -622,6 +708,11 @@
         <div class="plant-latin">Pilea peperomioides</div>
         <h2 class="plant-name">Chinese Money Plant</h2>
         <p class="plant-desc">Known for its distinctive round, coin-shaped leaves on delicate stems, this trendy plant has become an Instagram favorite. Originally from southern China, it produces "pups" (baby plants) freely, making it perfect for sharing with friends. Yours looks full and healthy.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -680,6 +771,11 @@
         <div class="plant-latin">Epipremnum aureum</div>
         <h2 class="plant-name">Golden Pothos</h2>
         <p class="plant-desc">One of the most forgiving and popular houseplants on the planet. Its heart-shaped, glossy green leaves trail beautifully from shelves or hanging baskets. Nearly indestructible, it purifies air and thrives on neglect — the ideal starter plant for any home.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -738,6 +834,11 @@
         <div class="plant-latin">Dracaena sanderiana</div>
         <h2 class="plant-name">Lucky Bamboo</h2>
         <p class="plant-desc">Despite its name, this isn't a true bamboo — it's a Dracaena native to Central Africa. Popular in feng shui, different stalk counts carry different meanings (3 = happiness, 5 = health). It can grow in water or soil and is quite low-maintenance. Yours shows some browning leaf tips, which is common and fixable.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -796,6 +897,11 @@
         <div class="plant-latin">Ficus lyrata</div>
         <h2 class="plant-name">Fiddle Leaf Fig</h2>
         <p class="plant-desc">The Instagram darling of the plant world, known for its large, violin-shaped, deeply veined leaves. Native to tropical West Africa, it's a stunning focal point — but has a reputation for being finicky. It dislikes change, drafts, and inconsistent care. Yours has beautiful, large leaves and looks well-established.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -854,6 +960,11 @@
         <div class="plant-latin">Monstera deliciosa</div>
         <h2 class="plant-name">Monstera (Swiss Cheese Plant)</h2>
         <p class="plant-desc">One of the most iconic houseplants, recognized by its huge, glossy leaves with natural holes and splits (fenestrations). Native to Mexican and Central American rainforests, it's a vigorous climber. Yours is a mature specimen with impressive fenestrations — a sign of great care and good light.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -913,6 +1024,11 @@
         <div class="plant-latin">Dracaena marginata</div>
         <h2 class="plant-name">Dragon Tree</h2>
         <p class="plant-desc">An elegant, sculptural tropical plant with thin, sword-like leaves growing from tall, narrow, branching woody canes. Native to Madagascar, the Dragon Tree is a low-maintenance statement plant with a dramatic architectural silhouette. Your plant has developed beautiful branching canes, each topped with a spray of narrow, pendulous leaves.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -971,6 +1087,11 @@
         <div class="plant-latin">Dracaena fragrans</div>
         <h2 class="plant-name">Corn Plant</h2>
         <p class="plant-desc">A tall, tree-like tropical plant with thick woody canes and long, arching, strap-shaped leaves. Native to tropical Africa, the Corn Plant gets its common name from leaves that resemble corn stalks. It's a classic statement plant that adds a tropical feel to any porch or living space.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1029,6 +1150,11 @@
         <div class="plant-latin">Hydrangea macrophylla</div>
         <h2 class="plant-name">Hydrangea</h2>
         <p class="plant-desc">A beloved flowering shrub producing large, globe-shaped flower clusters in shades of pink, blue, and purple. The flower color depends on soil pH — acidic soil produces blue flowers, while alkaline soil yields pink. Your potted hydrangea is blooming with lovely pink flower heads on the porch.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1087,6 +1213,11 @@
         <div class="plant-latin">Aglaonema commutatum</div>
         <h2 class="plant-name">Chinese Evergreen</h2>
         <p class="plant-desc">A stunning tropical foliage plant with large, oval leaves splashed with vibrant pink, red, and green variegation. Chinese Evergreens are prized for their colorful leaves and low-maintenance nature. Your specimen shows beautiful pink veining against green — a newer cultivar bred for intense color.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1145,6 +1276,11 @@
         <div class="plant-latin">Spathiphyllum wallisii</div>
         <h2 class="plant-name">Peace Lily</h2>
         <p class="plant-desc">A lush, tropical plant with large, dark green, glossy leaves that arch gracefully. Peace Lilies are famous for their elegant white spathes (modified leaves that look like flowers) and their ability to thrive in low light. They're also top-rated air purifiers. Your specimen is impressively large and full.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1203,6 +1339,11 @@
         <div class="plant-latin">Impatiens walleriana</div>
         <h2 class="plant-name">Impatiens</h2>
         <p class="plant-desc">A classic shade-loving annual covered in cheerful, bright red-orange flowers. Impatiens are workhorses of the shade garden, blooming continuously from spring through fall without deadheading. Your plant is loaded with vibrant red blooms, creating a gorgeous splash of color on the porch.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1261,6 +1402,11 @@
         <div class="plant-latin">Kalanchoe blossfeldiana</div>
         <h2 class="plant-name">Kalanchoe</h2>
         <p class="plant-desc">A popular succulent known for its clusters of long-lasting, vibrant pink double flowers above thick, scalloped dark green leaves. Originally from Madagascar, Kalanchoe is one of the most popular flowering succulents, blooming for weeks at a time. Your plant is covered in gorgeous hot pink blooms.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1319,6 +1465,11 @@
         <div class="plant-latin">Aloe barbadensis miller</div>
         <h2 class="plant-name">Aloe Vera</h2>
         <p class="plant-desc">The quintessential medicinal succulent, with thick, fleshy, lance-shaped leaves filled with a soothing gel used for burns, skin care, and more. Native to the Arabian Peninsula, Aloe Vera is incredibly low-maintenance and rewarding. Your plant looks healthy in its white wooden planter on the porch.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1377,6 +1528,11 @@
         <div class="plant-latin">Kalanchoe blossfeldiana</div>
         <h2 class="plant-name">Florist Kalanchoe</h2>
         <p class="plant-desc">Another variety of the popular flowering succulent, this one producing delicate clusters of tubular orange-red flowers. Paired here with a fern on the porch, it adds warm color to the shade. The scalloped succulent leaves are thick and waxy, storing water for drought tolerance.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1435,6 +1591,11 @@
         <div class="plant-latin">Nephrolepis exaltata</div>
         <h2 class="plant-name">Boston Fern</h2>
         <p class="plant-desc">A lush, graceful fern with long, arching fronds covered in small, bright green leaflets. Boston Ferns are classic porch plants across the Southern United States, creating a cascade of green that's both elegant and refreshing. Your fern looks full and vibrant with tightly packed fronds.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1493,6 +1654,11 @@
         <div class="plant-latin">Echinopsis / Mammillaria spp.</div>
         <h2 class="plant-name">Cactus Collection</h2>
         <p class="plant-desc">A charming collection of small cacti in a terracotta pot, featuring what appears to be a columnar Echinopsis (torch cactus) alongside a round Mammillaria (pincushion cactus). These desert natives are perfectly adapted to heat and drought, storing water in their thick stems.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1551,6 +1717,11 @@
         <div class="plant-latin">Mentha spp. / Mixed herbs</div>
         <h2 class="plant-name">Herb Garden</h2>
         <p class="plant-desc">A large terra cotta pot overflowing with a mix of herbs, primarily mint with its characteristic crinkled, aromatic leaves. You've also got what appears to be oxalis (shamrock plant) and possibly some other herbs mixed in. Mint is vigorous and aromatic — perfect for cooking and drinks.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1609,6 +1780,11 @@
         <div class="plant-latin">Rosa spp.</div>
         <h2 class="plant-name">Rose Bush</h2>
         <p class="plant-desc">A potted rose bush with soft white-to-blush-pink blooms amid dark green foliage. Roses are the classic garden flower, beloved for centuries for their beauty and fragrance. Your container rose is blooming nicely on the porch with several open flowers and buds forming.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1667,6 +1843,11 @@
         <div class="plant-latin">Murraya koenigii</div>
         <h2 class="plant-name">Curry Leaf Plant</h2>
         <p class="plant-desc">An aromatic tropical tree prized in South Asian cooking for its intensely fragrant compound leaves. Each leaf is made up of many small, glossy leaflets along a central stem. The fresh leaves release a distinctive warm, nutty, curry-like aroma when crushed — essential in South Indian, Sri Lankan, and Southeast Asian cuisines. Your plant shows healthy bright green growth.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1725,6 +1906,11 @@
         <div class="plant-latin">Mandevilla sanderi</div>
         <h2 class="plant-name">Mandevilla</h2>
         <p class="plant-desc">A stunning tropical vine producing large, trumpet-shaped red flowers against glossy dark green leaves. Mandevilla is a show-stopping climber that blooms continuously from spring through fall. Your vine on the porch has beautiful vibrant red blooms — a classic porch plant in the South.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1783,6 +1969,11 @@
         <div class="plant-latin">Hibiscus rosa-sinensis</div>
         <h2 class="plant-name">Hibiscus</h2>
         <p class="plant-desc">A young tropical hibiscus establishing in the garden bed, showing vigorous fresh green growth with characteristic serrated, glossy leaves. Once mature, it will produce large, showy trumpet-shaped flowers in vibrant colors. Hibiscus is the quintessential tropical garden plant, beloved for its spectacular blooms that can reach 4–6 inches across.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1841,6 +2032,11 @@
         <div class="plant-latin">Mandevilla spp.</div>
         <h2 class="plant-name">Dipladenia</h2>
         <p class="plant-desc">A compact variety of Mandevilla (often sold as Dipladenia) planted in the ground near a garden border. It features bright red trumpet flowers with yellow throats and glossy, deep green oval leaves. This bush-type Mandevilla stays more compact than vining varieties, making it perfect for garden beds.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1899,6 +2095,11 @@
         <div class="plant-latin">Jasminum spp.</div>
         <h2 class="plant-name">Jasmine</h2>
         <p class="plant-desc">A young jasmine bush planted in the ground near the porch steps, showing fresh green growth with small, glossy oval leaves. Jasmine is beloved for its intensely fragrant white flowers that perfume the air, especially on warm evenings. Your plant is establishing well and will fill out with time.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -1957,6 +2158,11 @@
         <div class="plant-latin">Begonia x tuberhybrida</div>
         <h2 class="plant-name">Begonia</h2>
         <p class="plant-desc">A newly planted tuberous begonia in the garden bed, just starting to show its first pink bloom. The plant tag confirms it's an annual begonia variety. These begonias produce large, showy flowers in vibrant colors and are a favorite for adding color to shady garden spots.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -2015,6 +2221,11 @@
         <div class="plant-latin">Bougainvillea glabra</div>
         <h2 class="plant-name">Bougainvillea</h2>
         <p class="plant-desc">A vibrant bougainvillea bursting with brilliant magenta-pink papery bracts (the colorful parts are actually modified leaves, not petals). Planted in the ground near a stone pathway, this tropical showstopper is one of the most dramatic flowering plants you can grow. Yours is putting on a spectacular display.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -2073,6 +2284,11 @@
         <div class="plant-latin">Liriope muscari</div>
         <h2 class="plant-name">Liriope</h2>
         <p class="plant-desc">A clump-forming ornamental grass-like plant with long, narrow dark green leaves. Also called Monkey Grass or Lily Turf, Liriope is one of the most versatile and tough landscape plants available. Often used as ground cover or border edging, it produces purple flower spikes in late summer.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -2131,6 +2347,11 @@
         <div class="plant-latin">Rhododendron spp.</div>
         <h2 class="plant-name">Azalea</h2>
         <p class="plant-desc">A beautiful azalea in full bloom, covered in vibrant hot pink flowers. Azaleas are iconic Southern garden plants, celebrated for their spectacular spring flower displays. Your potted specimen is putting on a gorgeous show with clusters of trumpet-shaped blooms covering the entire bush.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -2189,6 +2410,11 @@
         <div class="plant-latin">Salvia spp.</div>
         <h2 class="plant-name">Salvia</h2>
         <p class="plant-desc">A vigorous salvia establishing in the garden bed, showing lush, textured foliage with the characteristic broad, coarsely serrated leaves of the sage family. Salvias are one of the most rewarding garden plants, producing tall spikes of tubular flowers that attract hummingbirds and butterflies. Yours is building a strong base of foliage that will support abundant flower spikes.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -2247,6 +2473,11 @@
         <div class="plant-latin">Codiaeum variegatum</div>
         <h2 class="plant-name">Croton</h2>
         <p class="plant-desc">A stunning tropical foliage plant with leathery leaves painted in bold combinations of red, orange, yellow, and green. Crotons are among the most colorful foliage plants available. Your new purchase shows beautiful autumn-toned variegation with deep reds and warm oranges throughout the leaves.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -2305,6 +2536,11 @@
         <div class="plant-latin">Canna x generalis</div>
         <h2 class="plant-name">Canna Lily</h2>
         <p class="plant-desc">A tropical showstopper with bold, bronze-tinted banana-like leaves and vivid orange flowers held high on tall stems. Your 'Cannova Bronze Leaf Orange' variety combines dramatic dark foliage with fiery orange blooms — a striking combination. Cannas bring an instant tropical feel to any garden.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -2363,6 +2599,11 @@
         <div class="plant-latin">Lilium asiaticum</div>
         <h2 class="plant-name">Asiatic Lily</h2>
         <p class="plant-desc">A gorgeous bulb plant producing large, upward-facing star-shaped flowers in warm sunset shades of copper, pink, and orange. Asiatic Lilies are among the easiest lilies to grow, blooming in early to mid-summer. Your plant shows multiple blooms and buds, promising a continued show.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -2421,6 +2662,11 @@
         <div class="plant-latin">Schefflera arboricola 'Trinette'</div>
         <h2 class="plant-name">Variegated Schefflera</h2>
         <p class="plant-desc">A cheerful Umbrella Plant with distinctive variegated foliage — glossy green leaves splashed with bright cream and yellow. Each leaf is composed of multiple leaflets arranged like an umbrella or a hand. The 'Trinette' variety is particularly prized for its vivid variegation.</p>
+        <button class="share-btn" onclick="sharePlant(this)" aria-label="Share plant info">
+          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          Learn more…
+          <span class="share-toast">Copied!</span>
+        </button>
       </div>
     </div>
     <div class="care-grid">
@@ -2520,6 +2766,29 @@
     });
   });
 })();
+
+function sharePlant(btn) {
+  var card = btn.closest('.plant-card');
+  var name = card.querySelector('.plant-name').textContent;
+  var latin = card.querySelector('.plant-latin').textContent;
+  var category = card.dataset.category;
+  var desc = card.querySelector('.plant-desc').textContent;
+  var tip = card.querySelector('.texas-tip-text').textContent;
+
+  var prompt = 'I have a ' + name + ' (' + latin + ') growing ' + category +
+    ' in Texas. Here is what I know:\n\n' + desc + '\n\nTexas tip: ' + tip +
+    '\n\nTell me more about common problems, seasonal care tips, propagation, companion planting, and anything else I should know about this plant in a Texas climate.';
+
+  if (navigator.share) {
+    navigator.share({ title: name + ' — Plant Care', text: prompt }).catch(function() {});
+  } else {
+    navigator.clipboard.writeText(prompt).then(function() {
+      var toast = btn.querySelector('.share-toast');
+      toast.classList.add('show');
+      setTimeout(function() { toast.classList.remove('show'); }, 1500);
+    });
+  }
+}
 </script>
 
 </body>
